@@ -1,0 +1,55 @@
+<div [hidden]="!submitted">
+  <h3>Form successfully submitted!</h3>
+  <h4>Data:</h4>
+  <p>{{diagnostic}}</p>
+  <p><strong>You're being redirected to cars list in 2 sec automatically ...</strong></p>
+</div>
+<div [hidden]="submitted">
+  <h2>Car Form</h2>
+  <div class="alert alert-danger" role="alert">
+    {{diagnostic}}
+  </div>
+  <form (ngSubmit)="onSubmit()" #myForm="ngForm">
+    <div class="alert alert-info">
+      Form valid:
+      <span *ngIf="myForm.form.valid" class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>
+      <span *ngIf="!myForm.form.valid" class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
+    </div>
+    <div class="form-group">
+      <label for="brand">Brand</label>
+      <input id="brand" type="text" class="form-control" [(ngModel)]="model.brand" ngControl="brand" required #brandCtrl="ngForm">
+      <div [hidden]="brandCtrl.valid" class="alert alert-danger">
+        Brand is required! Please fill in a value.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="model">Model</label>
+      <input id="model" type="text" class="form-control" [(ngModel)]="model.model" ngControl="model" required #modelCtrl="ngForm">
+      <div [hidden]="modelCtrl.valid" class="alert alert-danger">
+        Model is required! Please fill in a value.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="fuelType">Fuel Type</label>
+      <select id="fuelType" class="form-control" [(ngModel)]="model.fuelType" ngControl="fuelType">
+        <option *ngFor="#ft of fuelTypes" [value]="ft">{{ft}}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="bodyStyle">Body Style</label>
+      <select id="bodyStyle" class="form-control" [(ngModel)]="model.bodyStyle" ngControl="bodyStyle">
+        <option *ngFor="#bs of bodyStyles" [value]="bs">{{bs}}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="topSpeed">Top Speed (mph)</label>
+      <input id="topSpeed" type="text" class="form-control" [(ngModel)]="model.topSpeed" ngControl="topSpeed">
+    </div>
+    <div class="form-group">
+      <label for="power">Power (HP)</label>
+      <input id="power" type="text" class="form-control" [(ngModel)]="model.power" ngControl="power">
+    </div>
+    <button type="submit" class="btn btn-default" [disabled]="!myForm.form.valid">Submit</button>
+  </form>
+</div>
+<hr />
