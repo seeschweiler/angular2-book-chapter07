@@ -1,6 +1,5 @@
-import {Component} from 'angular2/core';
-import {Router} from 'angular2/router';
-
+import {Component} from '@angular/core';
+import {Router} from '@angular/router';
 import {Car} from './car';
 import {CarService} from './car.service';
 
@@ -16,7 +15,7 @@ import {CarService} from './car.service';
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="#car of cars" (click)="onSelect(car)">
+          <tr *ngFor="let car of cars" (click)="onSelect(car)">
             <td>{{car.id}}</td>
             <td>{{car.brand}}</td>
             <td>{{car.model}}</td>
@@ -27,14 +26,14 @@ import {CarService} from './car.service';
 })
 export class CarsListComponent {
   cars: Car[];
-  
+
   constructor(private _router: Router, private _service: CarService) {}
-  
+
   ngOnInit() {
     this._service.getCars().then(cars => this.cars = cars);
   }
-  
+
   onSelect(car: Car) {
-    this._router.navigate( ['CarDetail', { id: car.id }] );
+    this._router.navigate(['/car', car.id] );
   }
 }

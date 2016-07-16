@@ -1,7 +1,6 @@
-import {Injectable} from 'angular2/core';
+import {Injectable} from '@angular/core';
 import {Car} from './car';
 import * as _ from 'underscore';
-
 
 @Injectable()
 export class CarService {

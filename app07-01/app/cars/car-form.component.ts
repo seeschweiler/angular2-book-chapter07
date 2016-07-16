@@ -1,13 +1,13 @@
-import {Component} from 'angular2/core';
-import {NgForm} from 'angular2/common';
-import {Router} from 'angular2/router';
+import {Component} from '@angular/core';
+import {NgForm} from '@angular/common';
+import {Router} from '@angular/router';
 import {Car} from './car';
 import {CarService} from './car.service';
 import * as _ from 'underscore';
 
 @Component({
   selector: 'car-form',
-  templateUrl: 'app/car-form.component.html'
+  templateUrl: 'app/cars/car-form.component.html'
 })
 export class CarFormComponent {
   submitted = false;
@@ -15,15 +15,15 @@ export class CarFormComponent {
   bodyStyles = ['Convertibles', 'Coupes', 'Hatchbacks', 'Vans', 'Sedans', 'Suvs', 'Trucks', 'Wagons'];
 
   model = new Car(_.uniqueId('car_'), '', '');
-  
+
   constructor(private _router: Router, private _service: CarService) {}
 
   onSubmit() {
     this.submitted = true;
     this._service.addCar(this.model);
-    
+
     setTimeout(() => {
-       this._router.navigate(['CarsList']);
+       this._router.navigate(['/']);
     }, 2000);
   }
 
