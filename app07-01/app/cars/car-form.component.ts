@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {NgForm} from '@angular/common';
 import {Router} from '@angular/router';
 import {Car} from './car';
 import {CarService} from './car.service';
@@ -23,7 +22,7 @@ export class CarFormComponent {
     this._service.addCar(this.model);
 
     setTimeout(() => {
-       this._router.navigate(['/']);
+       this._router.navigate(['/cars']);
     }, 2000);
   }
 

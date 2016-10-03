@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {Router, ActivatedRoute, ROUTER_DIRECTIVES} from '@angular/router';
+import {Router, ActivatedRoute} from '@angular/router';
 import {Car} from './car';
 import {CarService} from './car.service';
 
@@ -46,9 +46,8 @@ import {CarService} from './car.service';
           </tbody>
         </table>
       </div>
-      <a class="btn btn-primary btn-sm" [routerLink]="['/']">Back to List</a>
-    `,
-    directives: [ROUTER_DIRECTIVES]
+      <a class="btn btn-primary btn-sm" routerLink="/cars">Back to List</a>
+    `
 })
 export class CarDetailComponent {
   currentCar: Car;

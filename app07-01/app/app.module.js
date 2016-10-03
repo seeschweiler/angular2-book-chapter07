@@ -9,17 +9,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var AppComponent = (function () {
-    function AppComponent() {
+var platform_browser_1 = require('@angular/platform-browser');
+var app_component_1 = require('./app.component');
+var about_component_1 = require('./about.component');
+var cars_module_1 = require('./cars/cars.module');
+var app_routing_1 = require('./app.routing');
+var AppModule = (function () {
+    function AppModule() {
     }
-    AppComponent = __decorate([
-        core_1.Component({
-            selector: 'my-app',
-            template: "\n    <div class=\"panel panel-default\">\n      <div class=\"panel-heading\">\n        <h3 class=\"panel-title\">Routing and Navigation</h3>\n      </div>\n      <div class=\"panel-body\">\n        <ul class=\"nav nav-tabs\">\n          <li role=\"presentation\"><a routerLink=\"/cars\">Cars List</a></li>\n          <li role=\"presentation\"><a routerLink=\"/car/create\">New Car</a></li>\n          <li role=\"presentation\"><a routerLink=\"/about\">About</a></li>\n        </ul>\n        <router-outlet></router-outlet>\n      </div>\n    </div>\n  "
+    AppModule = __decorate([
+        core_1.NgModule({
+            imports: [platform_browser_1.BrowserModule, app_routing_1.routing, cars_module_1.CarModule],
+            declarations: [app_component_1.AppComponent, about_component_1.AboutComponent],
+            bootstrap: [app_component_1.AppComponent]
         }), 
         __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+    ], AppModule);
+    return AppModule;
 }());
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+exports.AppModule = AppModule;
+//# sourceMappingURL=app.module.js.map

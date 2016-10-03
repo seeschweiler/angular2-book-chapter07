@@ -27,7 +27,7 @@ var CarFormComponent = (function () {
         this.submitted = true;
         this._service.addCar(this.model);
         setTimeout(function () {
-            _this._router.navigate(['/']);
+            _this._router.navigate(['/cars']);
         }, 2000);
     };
     Object.defineProperty(CarFormComponent.prototype, "diagnostic", {
